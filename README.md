@@ -42,27 +42,26 @@ Man benötigt general AND (swagger OR pure_flask) AND (simple webserver OR nginx
 sudo apt update
 sudo apt upgrade
 sudo apt install git python3-pip
-git clone https://git.gpplanet.de/josef/FreiRaum_Server
-git clone https://gitlab.com/stillcrank/freiRaum.git
+git clone https://github.com/JosefProbst/FreiRaum_DHBW.git
 ```
 
 ### swagger
 ```bash
-cd ~/FreiRaum_Server/swagger_flask
+cd ~/FreiRaum_DHBW/swagger_flask
 pip3 install -r requirements.txt # currently fails because connexion depends on pyyaml https://github.com/yaml/pyyaml/issues/201
 python3 -m swagger_server &
 ```
 
 ### pure_flask
 ```bash
-cd ~/FreiRaum_Server/pure_flask
+cd ~/FreiRaum_DHBW/pure_flask
 pip3 install -r requirements.txt 
 python3 app.py &
 ```
 
 ### simple webserver
 ```bash
-cp ~/FreiRaum_Server/pure_flask/webserver.py ~/freiRaum/dist/freiraum/
+cp ~/FreiRaum_DHBW/pure_flask/webserver.py ~/freiRaum/dist/freiraum/
 cd ~/freiRaum/dist/freiraum/
 sudo python3 webserver.py &
 ```
