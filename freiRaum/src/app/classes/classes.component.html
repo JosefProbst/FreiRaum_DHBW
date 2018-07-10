@@ -1,0 +1,20 @@
+<mat-card>
+  <h2 mat-subheader>Kurse</h2>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let c of categories">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3>{{c}}</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <div *ngFor="let cl of classes">
+          <mat-list-item *ngIf="cl.category === c" routerLink="/classes/{{cl.classId}}" class="buttonFix">
+            <h4>{{cl.classId}}</h4>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </div>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>

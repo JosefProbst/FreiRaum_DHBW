@@ -1,0 +1,209 @@
+---
+swagger: "2.0"
+info:
+  description: "Freiraum Client/server Kommunikation"
+  version: "1.0.0"
+  title: "Freiraum Server RESTapi"
+host: "virtserver.swaggerhub.com"
+basePath: "/FreiRaum/FreiRaum/1.0.0"
+tags:
+- name: "user"
+  description: "Funktionen für die User"
+schemes:
+- "https"
+paths:
+  /classes:
+    get:
+      tags:
+      - "user"
+      summary: "Suche in den lokalen RAPLA-Daten nach allen Kursen"
+      description: "Eine Anfrage an diese Andresse gibt alle Kurse und deren Kategorien\
+        \ zurück"
+      operationId: "search_classes"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Liste aller Kurse"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Class"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /classes/{classId}:
+    get:
+      tags:
+      - "user"
+      summary: "Suche in den lokalen RAPLA-Daten nach Vorlesungsplänen"
+      description: "Eine Anfrage an diese Adresse gibt einen Vorlesungsplan zu einem\
+        \ entsprechenden Kurs zurück"
+      operationId: "search_class_plan"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "classId"
+        in: "path"
+        description: "Übergebe String mit dem Kurskürzel, um den Vorlesungsplan zu\
+          \ bekommen"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Vorlesungsplan der entsprechenden Suchanfrage"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Lecture"
+        404:
+          description: "Kurskürzel existiert nicht in lokalen Daten"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /rooms:
+    get:
+      tags:
+      - "user"
+      summary: "Suche in den lokalen RAPLA-Daten nach allen/freien Räumen"
+      description: ""
+      operationId: "search_rooms"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "starttime"
+        in: "query"
+        description: ""
+        required: false
+        type: "string"
+      - name: "endtime"
+        in: "query"
+        description: ""
+        required: false
+        type: "string"
+      - name: "category"
+        in: "query"
+        description: ""
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Room"
+        400:
+          description: "Fehlerhafte Parameter"
+        404:
+          description: "Kein Raum existiert mit den angegebenen Parametern"
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+  /rooms/{roomId}:
+    get:
+      tags:
+      - "user"
+      summary: "Suche in den lokalen RAPLA-Daten nach Raumbelegungsplänen"
+      description: ""
+      operationId: "search_room_plan"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "roomId"
+        in: "path"
+        description: ""
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: ""
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Lecture"
+        404:
+          description: ""
+      x-swagger-router-controller: "swagger_server.controllers.user_controller"
+definitions:
+  Class:
+    type: "object"
+    required:
+    - "category"
+    - "classId"
+    properties:
+      classId:
+        type: "string"
+        example: "TIT15"
+      category:
+        type: "string"
+        example: "TLS"
+    example:
+      classId: "TIT15"
+      category: "TLS"
+  Lecture:
+    type: "object"
+    required:
+    - "classId"
+    - "endTime"
+    - "name"
+    - "roomId"
+    - "startTime"
+    properties:
+      name:
+        type: "string"
+        example: "Physik"
+      startTime:
+        type: "string"
+        format: "int32"
+        example: "2016-08-29T09:12:33"
+      endTime:
+        type: "string"
+        format: "int32"
+        example: "2016-08-29T15:12:33"
+      roomId:
+        type: "string"
+        example: "O513"
+      classId:
+        type: "string"
+        example: "TIT15"
+    example:
+      classId: "TIT15"
+      name: "Physik"
+      startTime: "2016-08-29T09:12:33"
+      endTime: "2016-08-29T15:12:33"
+      roomId: "O513"
+  Room:
+    type: "object"
+    required:
+    - "building"
+    - "category"
+    - "chairs"
+    - "pc"
+    - "roomId"
+    - "tables_exam"
+    properties:
+      roomId:
+        type: "string"
+        example: "O511"
+      building:
+        type: "string"
+        example: "Gebäude Ost"
+      chairs:
+        type: "integer"
+        example: 16
+      chairs_max:
+        type: "integer"
+        example: 32
+      tables_exam:
+        type: "integer"
+        example: 0
+      pc:
+        type: "integer"
+        example: 16
+      category:
+        type: "string"
+        example: "Labor"
+    example:
+      pc: 16
+      chairs: 16
+      tables_exam: 0
+      category: "Labor"
+      roomId: "O511"
+      building: "Gebäude Ost"
+      chairs_max: 32

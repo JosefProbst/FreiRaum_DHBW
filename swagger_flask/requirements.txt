@@ -1,0 +1,10 @@
+connexion
+python_dateutil
+setuptools >= 21.0.0
+requests
+flask-cors
+gevent
+gevent-fastcgi
+gevent-websocket
+tornado
+

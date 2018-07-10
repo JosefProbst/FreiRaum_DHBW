@@ -1,0 +1,35 @@
+<div class="mainDiv">
+  <mat-toolbar color="primary" class="app-toolbar">
+    <div fxShow="true" fxHide.gt-sm="true" class="mobileToolbar">
+      <div class="menuIconDiv">
+        <mat-icon (click)="sidenav.toggle()" class="menuIcon buttonFix">menu</mat-icon>
+      </div>
+      <span routerLink="/" class="mobileTitle buttonFix">FreiRaum</span>
+    </div>
+    <div fxShow="true" fxHide.lt-md="true">
+      <span routerLink="/" class="desktopTitle buttonFix">FreiRaum</span>
+      <a routerLink="/classes" mat-button>Kurse</a>
+      <a routerLink="/rooms" mat-button>Räume</a>
+      <a routerLink="/roomFinder" mat-button>Raum finden</a>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill class="container">
+    <mat-sidenav #sidenav fxLayout="column">
+      <div fxLayout="column">
+        <mat-nav-list>
+          <a mat-list-item routerLink="/classes" (click)="sidenav.close()">Kurse</a>
+          <a mat-list-item routerLink="/rooms" (click)="sidenav.close()">Räume</a>
+          <a mat-list-item routerLink="/roomFinder" (click)="sidenav.close()">Raum finden</a>
+        </mat-nav-list>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <div class="mainDivOutlet">
+        <div class="secondMainDivOutlet">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,27 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+body, html {
+  margin: 0 auto;
+  font-family: Roboto, sans-serif;
+}
+
+.buttonFix:hover {
+  cursor: pointer;
+}
+
+.buttonFix:active, .buttonFix:focus {
+  outline: 0;
+  border: none;
+}
+
+.matCardActions {
+  margin-top: 20px;
+}
+
+.matCardActionsButton {
+  margin: 5px;
+}
+
+.roomsListButtonSpacer {
+  width: 100%;
+}

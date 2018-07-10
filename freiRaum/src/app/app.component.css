@@ -1,0 +1,43 @@
+.mainDiv {
+  height: calc(100vh - 64px);
+}
+
+.app-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.mobileToolbar {
+  width: 100%;
+}
+
+.menuIconDiv {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.menuIcon {
+  color: white;
+}
+
+.mobileTitle{
+  margin: 0 auto;
+  display: table;
+}
+
+.desktopTitle {
+  padding-right: 20px;
+}
+
+.mainDivOutlet {
+  width: 100%;
+}
+
+.secondMainDivOutlet {
+  margin: auto;
+  max-width: 1280px;
+  padding: 30px 5% 5%;
+}

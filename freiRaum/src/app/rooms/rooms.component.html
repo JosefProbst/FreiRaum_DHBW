@@ -1,0 +1,29 @@
+<mat-card>
+  <h2 mat-subheader>Räume</h2>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let c of categories">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3>{{c}}</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <div *ngFor="let room of rooms">
+          <div *ngIf="room.category === c">
+            <mat-list-item>
+              <h4>{{room.roomId}}</h4>
+              <span class="roomsListButtonSpacer"></span>
+              <button mat-button (click)="openDialog(room.roomId)">
+                <mat-icon>info</mat-icon>
+              </button>
+              <button mat-button routerLink="/rooms/{{room.roomId}}">
+                <mat-icon>calendar_today</mat-icon>
+              </button>
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </div>
+        </div>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>
