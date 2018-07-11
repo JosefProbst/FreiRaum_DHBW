@@ -37,6 +37,8 @@ Optional:
 
 Man benötigt general AND (swagger OR pure_flask) AND (simple webserver OR nginx)
 
+Für die Weiterentwicklung wird pure_flask und simple webserver empfohlen.
+
 ### general
 ```bash
 sudo apt update
