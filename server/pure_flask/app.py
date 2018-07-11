@@ -222,5 +222,8 @@ if __name__ == "__main__":
     db = database_controller.DatabaseController()
     # non-blocking way to update the database every x seconds
     rt.RepeatedTimer(60, db.create_random_database)
-    app.run(host="0.0.0.0", port=8080)
+    try:
+        app.run(host="0.0.0.0", port=8080)
+    finally:
+        rt.stop()
 
