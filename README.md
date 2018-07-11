@@ -71,14 +71,13 @@ sudo python3 webserver.py &
 sudo apt install nginx
 ```
 Modifiziere den folgenden Block nach deinen Bedürfnissen und füge ihn in den "http Block" von /etc/nginx/nginx.conf ein.
+
     server {
 		listen 80;
 		server_name example.org;	# or the ip
 		root /home/pi/FreiRaum_DHBW/client/dist/freiraum;	#actually: /path/to/dir/of/index.html
 		index index.html
-
 		gzip_static on;
-
 		location / {
 			try_files $uri /index.html;
 		}
