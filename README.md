@@ -47,22 +47,22 @@ git clone https://github.com/JosefProbst/FreiRaum_DHBW.git
 
 ### swagger
 ```bash
-cd ~/FreiRaum_DHBW/swagger_flask
+cd ~/FreiRaum_DHBW/server/swagger_flask
 pip3 install -r requirements.txt # currently fails because connexion depends on pyyaml https://github.com/yaml/pyyaml/issues/201
 python3 -m swagger_server &
 ```
 
 ### pure_flask
 ```bash
-cd ~/FreiRaum_DHBW/pure_flask
+cd ~/FreiRaum_DHBW/server/pure_flask
 pip3 install -r requirements.txt 
 python3 app.py &
 ```
 
 ### simple webserver
 ```bash
-cp ~/FreiRaum_DHBW/pure_flask/webserver.py ~/freiRaum/dist/freiraum/
-cd ~/freiRaum/dist/freiraum/
+cp ~/FreiRaum_DHBW/server/pure_flask/webserver.py ~/FreiRaum_DHBW/client/dist/freiraum/
+cd ~/FreiRaum_DHBW/client/dist/freiraum/
 sudo python3 webserver.py &
 ```
 	
@@ -74,7 +74,7 @@ Modifiziere den folgenden Block nach deinen Bedürfnissen und füge ihn in den "
     server {
 		listen 80;
 		server_name example.org;	# or the ip
-		root /home/pi/freiRaum/dist/freiraum;	#actually: /path/to/dir/of/index.html
+		root /home/pi/FreiRaum_DHBW/client/dist/freiraum;	#actually: /path/to/dir/of/index.html
 		index index.html
 
 		gzip_static on;
