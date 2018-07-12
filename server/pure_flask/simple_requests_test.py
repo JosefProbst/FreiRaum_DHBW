@@ -17,8 +17,8 @@ now_plus_3h_invalid = datetime.datetime.strftime(datetime.datetime.now() + datet
 now_plus_15d = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=15), valid_date_format)
 now_plus_15d3h = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=15, hours=3), valid_date_format)
 
-now_minus_15d = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=-15), valid_date_format)
-now_minus_15d3h = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=-15, hours=3), valid_date_format)
+now_minus_2d = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=-2), valid_date_format)
+now_minus_2d3h = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=-2, hours=3), valid_date_format)
 
 
 r = requests.get(base_url + "classes/TIT16")
@@ -57,8 +57,8 @@ assert r.status_code == 400
 r = requests.get(base_url + "rooms?starttime=" + now_invalid + "&endtime=" + now_plus_3h_invalid + "&category=all")
 assert r.status_code == 400
 
-# requested date is "older" than 14 days
-r = requests.get(base_url + "rooms?starttime=" + now_minus_15d + "&endtime=" + now_minus_15d3h + "&category=all")
+# requested date is "older" than 2 days
+r = requests.get(base_url + "rooms?starttime=" + now_minus_2d + "&endtime=" + now_minus_2d3h + "&category=all")
 assert r.status_code == 403
 
 # requested date is "newer" than 14 days

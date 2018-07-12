@@ -12,7 +12,7 @@ valid_room_categories = ["seminarraum", "labor", "meeting", "büro", "projektrau
 valid_date_format = "%Y-%m-%dT%H:%M:%S"
 
 valid_days_future = 14
-valid_days_past = -14
+valid_days_past = -1
 
 
 @app.route("/FreiRaum/FreiRaum/1.0.0/classes/<requested_class_id>")
@@ -172,7 +172,7 @@ def search_rooms():  # noqa: E501
 
     if interval_start < datetime.now() + timedelta(days=valid_days_past) \
             or interval_end > datetime.now() + timedelta(days=valid_days_future):
-        return create_HTTP_error_json("Requests can only be made for the last 14 days, today or coming 14 days",
+        return create_HTTP_error_json("Requests can only be made for the yesterday, today or coming 14 days",
                                       "403",
                                       "Forbidden"), 403
 
