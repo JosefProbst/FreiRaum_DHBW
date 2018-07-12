@@ -24,8 +24,8 @@ export class RoomFinderComponent implements OnInit {
   endM = this.startM;
   cat = 'all';
 
-  // der gültige Bereich reicht von zwei Wochen in der Vergangenheit bis zwei Wochen in der Zukunft
-  minDate = new Date(this.date.getTime() - (14 * 24 * 60 * 60 * 1000));
+  // der gültige Bereich reicht vom aktuellen Tag bis zwei Wochen in die Zukunft
+  minDate = this.date;
   maxDate = new Date(this.date.getTime() + (14 * 24 * 60 * 60 * 1000));
 
   constructor(

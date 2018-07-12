@@ -50,8 +50,8 @@ export class RoomComponent implements OnInit {
   setScheduleOptions(): void {
     this.scheduleOptions = {
       validRange: {
-        // der gültige Bereich reicht von 2 Wochen in der Vergangenheit bis 3 Wochen in die Zukunft
-        start: new Date().getTime() - (14 * 24 * 60 * 60 * 1000),
+        // der gültige Bereich reicht vom aktuellen Tag bis 3 Wochen in die Zukunft (um angebrochene Wochen voll anzeigen zu können)
+        start: new Date(),
         end: new Date().getTime() + (21 * 24 * 60 * 60 * 1000)
       },
       weekends: false,

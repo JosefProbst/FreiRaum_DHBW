@@ -49,9 +49,9 @@ export class ClassComponent implements OnInit {
   // setzt die Kalenderoptionen
   setScheduleOptions(): void {
     this.scheduleOptions = {
-      // der gültige Bereich reicht von 2 Wochen in der Vergangenheit bis 3 Wochen in die Zukunft
+      // der gültige Bereich reicht vom aktuellen Tag bis 3 Wochen in die Zukunft (um angebrochene Wochen voll anzeigen zu können)
       validRange: {
-        start: new Date().getTime() - (14 * 24 * 60 * 60 * 1000),
+        start: new Date(),
         end: new Date().getTime() + (21 * 24 * 60 * 60 * 1000)
       },
       weekends: false,
