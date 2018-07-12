@@ -170,8 +170,8 @@ def search_rooms():  # noqa: E501
                                       "400",
                                       "Bad Request"), 400
 
-    if interval_start < datetime.now() + timedelta(days=-14) \
-            or interval_end > datetime.now() + timedelta(days=14):
+    if interval_start < datetime.now() + timedelta(days=valid_days_past) \
+            or interval_end > datetime.now() + timedelta(days=valid_days_future):
         return create_HTTP_error_json("Requests can only be made for the last 14 days, today or coming 14 days",
                                       "403",
                                       "Forbidden"), 403
