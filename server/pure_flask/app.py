@@ -221,9 +221,9 @@ def create_HTTP_error_json(detail, status, title):
 if __name__ == "__main__":
     db = database_controller.DatabaseController()
     # non-blocking way to update the database every x seconds
-    rt.RepeatedTimer(60, db.create_random_database)
+    repeating_timer = rt.RepeatedTimer(60, db.create_random_database)
     try:
         app.run(host="0.0.0.0", port=8080)
     finally:
-        rt.stop()
+        repeating_timer.stop()
 
